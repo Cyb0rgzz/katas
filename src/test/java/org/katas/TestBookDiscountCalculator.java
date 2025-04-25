@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestBookDiscountCalculator {
 
@@ -48,7 +50,7 @@ public class TestBookDiscountCalculator {
         BookBasket basket = new BookBasket(bookMap);
 
         double price = calculator.calculatePrice(basket);
-        assertEquals(95.0, price, 0.0); // 5% discount on 100
+        assertEquals(95.0, price, 0.0); // 5% discount
     }
 
     @Test
@@ -62,7 +64,7 @@ public class TestBookDiscountCalculator {
 
         double price = calculator.calculatePrice(basket);
 
-        assertEquals(135.0, price, 0.0);
+        assertEquals(135.0, price, 0.0); // 10% discount
     }
 
     @Test
@@ -77,7 +79,7 @@ public class TestBookDiscountCalculator {
 
         double price = calculator.calculatePrice(basket);
 
-        assertEquals(160, price, 0.0);
+        assertEquals(160, price, 0.0); // 20% discount
     }
 
     @Test
@@ -93,10 +95,42 @@ public class TestBookDiscountCalculator {
 
         double price = calculator.calculatePrice(basket);
 
-        assertEquals(187.50, price, 0.0);
+        assertEquals(187.50, price, 0.0); //25% discount
     }
 
+    //@Test
+    public void testMultipleBooksDiscount(){
+        Map<BookTitle, Integer> bookMap = new HashMap<>();
+        bookMap.put(BookTitle.CLEAN_CODE, 2);
+        bookMap.put(BookTitle.THE_CLEAN_CODER, 2);
+        bookMap.put(BookTitle.CLEAN_ARCHITECTURE, 2);
+        bookMap.put(BookTitle.TDD_BY_EXAMPLE, 1);
 
+        BookBasket basket = new BookBasket(bookMap);
+
+        double price = calculator.calculatePrice(basket);
+
+        assertEquals(280, price, 0.0);
+    }
+
+    @Test
+    public void testEmptyBasket() {
+        Map<BookTitle, Integer> bookMap = new HashMap<>();
+        BookBasket basket = new BookBasket(bookMap);
+        double price = calculator.calculatePrice(basket);
+
+        assertEquals(0.0, price, 0.0);
+    }
+
+    @Test
+    public void testNullBasket() {
+        Map<BookTitle, Integer> bookMap = null;
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            BookBasket basket = new BookBasket(bookMap);
+        });
+
+        assertNotNull(exception, "A null book map should throw a NullPointerException.");
+    }
 
 
 }
