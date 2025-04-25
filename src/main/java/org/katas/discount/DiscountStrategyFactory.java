@@ -1,4 +1,9 @@
-package org.katas;
+package org.katas.discount;
+
+import org.katas.discount.impl.NoDiscount;
+import org.katas.discount.impl.PercentageDiscount;
+import org.katas.model.BookDiscount;
+import org.katas.model.BookTitle;
 
 import java.util.Map;
 

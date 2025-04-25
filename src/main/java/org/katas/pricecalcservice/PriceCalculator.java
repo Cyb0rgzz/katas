@@ -1,4 +1,10 @@
-package org.katas;
+package org.katas.pricecalcservice;
+
+import org.katas.discount.DiscountStrategy;
+import org.katas.discount.DiscountStrategyFactory;
+import org.katas.model.BookBasket;
+import org.katas.model.BookTitle;
+
 import java.util.Map;
 
 public class PriceCalculator {

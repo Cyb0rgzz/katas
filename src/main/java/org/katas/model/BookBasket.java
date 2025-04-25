@@ -1,4 +1,4 @@
-package org.katas;
+package org.katas.model;
 
 import java.util.HashMap;
 import java.util.Map;

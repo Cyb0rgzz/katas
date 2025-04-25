@@ -1,4 +1,6 @@
-package org.katas;
+package org.katas.discount.impl;
+
+import org.katas.discount.DiscountStrategy;
 
 public class NoDiscount implements DiscountStrategy {
     @Override

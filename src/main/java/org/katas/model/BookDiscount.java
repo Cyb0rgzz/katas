@@ -1,4 +1,4 @@
-package org.katas;
+package org.katas.model;
 
 public enum BookDiscount {
     NONE(0.0),

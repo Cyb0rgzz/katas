@@ -2,6 +2,10 @@ package org.katas;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.katas.discount.DiscountStrategyFactory;
+import org.katas.model.BookBasket;
+import org.katas.model.BookTitle;
+import org.katas.pricecalcservice.PriceCalculator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class TestBookDiscountCalculator {
+public class PriceCalculatorTest {
 
     private PriceCalculator calculator;
 
