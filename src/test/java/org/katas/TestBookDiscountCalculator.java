@@ -32,4 +32,17 @@ public class TestBookDiscountCalculator {
 
         assertEquals(100.0, price, 0.0);
     }
+
+    @Test
+    public void testTwoDifferentBooksDiscount() {
+        Map<BookTitle, Integer> bookMap = new HashMap<>();
+        bookMap.put(BookTitle.CLEAN_CODE, 1);
+        bookMap.put(BookTitle.THE_CLEAN_CODER, 1);
+
+        BookBasket basket = new BookBasket(bookMap);
+        PriceCalculator calculator = new PriceCalculator();
+        double price = calculator.calculatePrice(basket);
+
+        assertEquals(95.0, price); // 5% discount on 100
+    }
 }
