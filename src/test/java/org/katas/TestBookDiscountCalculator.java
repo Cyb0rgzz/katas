@@ -18,6 +18,18 @@ public class TestBookDiscountCalculator {
         PriceCalculator calculator = new PriceCalculator();
         double price = calculator.calculatePrice(basket);
 
-        assertEquals(50.0, price);
+        assertEquals(50.0, price, 0.0);
+    }
+
+    @Test
+    public void testTwoIdenticalBooksNoDiscount() {
+        Map<BookTitle, Integer> bookMap = new HashMap<>();
+        bookMap.put(BookTitle.CLEAN_CODE, 2);
+
+        BookBasket basket = new BookBasket(bookMap);
+        PriceCalculator calculator = new PriceCalculator();
+        double price = calculator.calculatePrice(basket);
+
+        assertEquals(100.0, price, 0.0);
     }
 }
