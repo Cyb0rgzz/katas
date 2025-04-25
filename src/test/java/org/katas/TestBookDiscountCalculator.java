@@ -65,5 +65,38 @@ public class TestBookDiscountCalculator {
         assertEquals(135.0, price, 0.0);
     }
 
+    @Test
+    public void testFourDifferentBooksDiscount() {
+        Map<BookTitle, Integer> bookMap = new HashMap<>();
+        bookMap.put(BookTitle.CLEAN_CODE, 1);
+        bookMap.put(BookTitle.THE_CLEAN_CODER, 1);
+        bookMap.put(BookTitle.CLEAN_ARCHITECTURE, 1);
+        bookMap.put(BookTitle.TDD_BY_EXAMPLE, 1);
+
+        BookBasket basket = new BookBasket(bookMap);
+
+        double price = calculator.calculatePrice(basket);
+
+        assertEquals(160, price, 0.0);
+    }
+
+    @Test
+    public void testFiveDifferentBooksDiscount() {
+        Map<BookTitle, Integer> bookMap = new HashMap<>();
+        bookMap.put(BookTitle.CLEAN_CODE, 1);
+        bookMap.put(BookTitle.THE_CLEAN_CODER, 1);
+        bookMap.put(BookTitle.CLEAN_ARCHITECTURE, 1);
+        bookMap.put(BookTitle.TDD_BY_EXAMPLE, 1);
+        bookMap.put(BookTitle.WORKING_WITH_LEGACY_CODE, 1);
+
+        BookBasket basket = new BookBasket(bookMap);
+
+        double price = calculator.calculatePrice(basket);
+
+        assertEquals(187.50, price, 0.0);
+    }
+
+
+
 
 }
